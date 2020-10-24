@@ -4,7 +4,7 @@ import NetworkModule from './SpotifyNetworkModule'
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "62c2f22951254954a357ada4001660b6";
-const redirectUri = "https://mattognibene.github.io";
+const redirectUri = "https://mattognibene.github.io/pokeplaylistv3";
 const scopes = [
     "user-top-read"
 ];
