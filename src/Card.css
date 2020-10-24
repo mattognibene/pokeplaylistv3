@@ -3,9 +3,10 @@
   .card_border {
     width: 500px;
     height: 698px;
-    margin: auto;
     background: #fbdd65;
     border-radius: 15px;
+    position: relative;
+    margin:auto
   }
   .card {
     width: 460px;
@@ -18,11 +19,6 @@
     position: relative;
   }
   
-  .card_container {
-    padding-top: 100px;
-    padding-bottom: 100px;
-    /*transform: rotate(45deg);  Equal to rotateZ(45deg) */
-  }
   
   .artist_container{
     width: 400px;

@@ -25,7 +25,11 @@ async function getTopArtists(bearer) {
     var promise= NetworkModule.getData('https://api.spotify.com/v1/me/top/artists?time_range=long_term', bearer)
     .then(data => {
         let items = data.items
-        return items[0].id
+        let artistIds = []
+        for(var i = 0; i < 3; i++) {
+            artistIds.push(items[i].id)
+        }
+        return artistIds
     })
     return await promise
 }
@@ -40,7 +44,7 @@ class App extends React.Component {
             this.setState({
                 token: _token
             });
-            getTopArtists(_token).then(data => this.setState({artistId: data}))
+            getTopArtists(_token).then(data => this.setState({artistIds: data}))
         }
     }
     constructor(props) {
@@ -59,8 +63,8 @@ class App extends React.Component {
                     Login to Spotify
                     </a>
                 )}
-                {this.state.token && this.state.artistId &&(
-                    <Deck bearer={this.state.token} artistId={this.state.artistId}/> 
+                {this.state.token && this.state.artistIds &&(
+                    <Deck bearer={this.state.token} artistIds={this.state.artistIds}/> 
                 )}
             </div>
             

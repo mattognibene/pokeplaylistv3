@@ -57,9 +57,8 @@ const getAlbums = (albums) => {
     return albumsRows
 }
 
-const Card = ({genre, artistName, imageUrl, popularity, followers, albums}) => 
-        <div className = "card_container">
-        <div className="card_border">
+const Card = ({genre, artistName, imageUrl, popularity, followers, albums, cardStyle}) => 
+        <div className="card_border" style={cardStyle}>
           <div className="card holographic">
             <div className="header_container">
               <div className="genre_container">
@@ -93,5 +92,4 @@ const Card = ({genre, artistName, imageUrl, popularity, followers, albums}) =>
             </div>
           </div>
         </div>
-      </div>
 export default Card

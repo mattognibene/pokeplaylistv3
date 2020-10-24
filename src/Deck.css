@@ -1,0 +1,10 @@
+.deck_container {
+    position: relative;
+    padding-top: 75px;
+}
+
+.artist_card {
+    position: absolute;
+    right: 0px;
+    outline: 2px solid red;
+}
