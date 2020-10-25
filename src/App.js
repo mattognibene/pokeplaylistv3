@@ -65,11 +65,11 @@ class App extends React.Component {
                     Login to Spotify
                     </a>
                 )}
-                {/*this.state.token && this.state.artistIds &&(
+                {this.state.token && this.state.artistIds &&(
                     <Deck bearer={this.state.token} artistIds={this.state.artistIds}/> 
-                )*/
-                <Deck bearer='BQA_8s11SUA5syouAGC1r6a4x8wyfT-JRBM7FY8FzQvx89GqT_91I5_rU4MOawXtrzngbbeDeXj9RycWgPZiLve0zW3vo5DHOjt6WKRuhQlrAMpXFK6awpw1OmXWRtszdw7EW9ZDh7f2111hc0gF7-GpZIyBV-kL7__iQHMt'
-                    artistIds={['7pbDxGE6nQSZVfiFdq9lOL', '7wg1qvie3KqDNQbAkTdbX0', '3TVXtAsR1Inumwj472S9r4']} />
+                )
+                /*<Deck bearer='BQBLJUOLLpHDoSNJFx5cvayY90C-GsqkZ_NTjvnOabCQK7PKwsLZZVSE2WemltIW1RyrHuTdKQUwSIcoiCxenBYFg3OBsbHKFT2VZ4HPAvOnaZkJe3Meupm_3m-4xtXCUwmsbj2U_ztpUMtIdWsHfQvU7cQm4y25jUk5WLXg'
+                    artistIds={['2HSEdXKVq1WWtBbsIeNjRX', '1UTPBmNbXNTittyMJrNkvw', '7wg1qvie3KqDNQbAkTdbX0']} /> */
                 }
             </div>
             

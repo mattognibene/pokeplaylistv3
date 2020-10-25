@@ -6,9 +6,13 @@ import metal from './res/metal.png'
 import psychic from './res/psychic.png'
 import electric from './res/electric.png'
 import ghost from './res/ghost.png'
+import grass from './res/grass.png'
+import fighting from './res/fighting.png'
+import water from './res/water.png'
 import './Card.css';
 
-const ALBUM_LOCATIONS = ['canadian', 'chicago', 'atl', 'dfw', 'east coast', 'west coast', 'boston', 'florida', 'miami']
+const ALBUM_FILTER = ['canadian', 'chicago', 'atl', 'dfw', 'east coast', 'west coast', 'boston', 'florida', 'miami', 'contemporary',
+'modern']
 
 const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -41,11 +45,20 @@ const getType = (genre) => {
         else if (genre.includes('pop')) {
             return psychic
         }
-        else if (genre.includes('edm') || genre.includes('electro') || genre.includes('dubstep')) {
+        else if (genre.includes('edm') || genre.includes('electro') || genre.includes('dubstep') || genre.includes('latin')) {
             return electric
         }
         else if (genre.includes('r&b')) {
             return ghost
+        }
+        else if (genre.includes('indie')) {
+            return water
+        }
+        else if (genre.includes('rock')) {
+            return fighting
+        } 
+        else if (genre.includes('country') || genre.includes('folk')) {
+            return grass
         }
     }
     return normal
@@ -65,13 +78,25 @@ const getHolographicClass = (genre) => {
         else if (genre.includes('r&b')) {
             return 'holographic_rb'
         }
+        else if (genre.includes('indie')) {
+            return 'holographic_indie'
+        }
+        else if (genre.includes('rock')) {
+            return 'holographic_rock'
+        } 
+        else if (genre.includes('country') || genre.includes('folk')) {
+            return 'holographic_country'
+        }
     }
     return 'holographic_pop'
 }
 
 const getTextColor = (genre) => {
     if (genre) {
-        if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime')) {
+        if (genre.includes('indie')) {
+            return '#000000'
+        }
+        if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime')|| genre.includes('rock')) {
             return '#FFFFFF'
         }
     }
@@ -79,9 +104,9 @@ const getTextColor = (genre) => {
 }
 
 const getArtistName = (artistName, genre) => {
-    let total_length = parseInt(1.6 * artistName.length) + genre.length
-    if (total_length > 48) {
-        return artistName.substring(0, parseInt((48 - genre.length) / 1.6) - 5) + "..."
+    let total_length = parseInt(1.2 * artistName.length) + genre.length
+    if (total_length > 40) {
+        return artistName.substring(0, parseInt((40 - genre.length) / 1.2) - 5) + "..."
     } else {
         return artistName
     }
@@ -103,7 +128,7 @@ const formatTracks = (tracks) => {
 const cleanGenre = (genre) => {
     if (genre) {
         var cleaned = genre
-        ALBUM_LOCATIONS.forEach ((country) => {
+        ALBUM_FILTER.forEach ((country) => {
             cleaned = cleaned.replace(country + ' ', '')
         })
         return cleaned

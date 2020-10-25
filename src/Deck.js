@@ -95,7 +95,7 @@ class Deck extends React.Component {
   constructor(props) {
     super(props)
     this.state =  {
-      zoom: window.innerWidth / 1600 // todo hardcoded
+      zoom: Math.min(1, window.innerWidth / 1600) // todo hardcoded
     }
   }
 

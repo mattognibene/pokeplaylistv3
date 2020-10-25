@@ -96,6 +96,19 @@
     background-size: 200%;
   }
 
+  .holographic_rock {
+    background-image: linear-gradient( 181.3deg,  rgba(134,15,15,1) 24.9%, rgba(183,10,10,1) 46.9%, rgba(210,70,0,1) 85.1% );
+  }
+
+  .holographic_indie {
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(130,205,221,1) 0%, rgba(255,247,153,1) 90% );
+    background-size: 200%
+  }
+
+  .holographic_country {
+    background-image: radial-gradient( circle 880px at -0.7% 57.1%,  rgba(202,149,149,1) 0%, rgba(239,215,177,1) 14.3%, rgba(239,239,177,1) 27.4%, rgba(191,239,177,1) 40.1%, rgba(177,239,217,1) 48.7%, rgba(177,238,239,1) 56.7%, rgba(177,180,239,1) 73.2%, rgba(224,177,239,1) 89.8%, rgba(239,177,231,1) 100.2% );
+  }
+
   .holographic_hip_hop {
     background-image: linear-gradient(
         to right,
