@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/pokeplaylistv3/static/css/main.886aa077.chunk.css",
-    "main.js": "/pokeplaylistv3/static/js/main.e3386013.chunk.js",
-    "main.js.map": "/pokeplaylistv3/static/js/main.e3386013.chunk.js.map",
+    "main.js": "/pokeplaylistv3/static/js/main.4af49852.chunk.js",
+    "main.js.map": "/pokeplaylistv3/static/js/main.4af49852.chunk.js.map",
     "runtime-main.js": "/pokeplaylistv3/static/js/runtime-main.e321893c.js",
     "runtime-main.js.map": "/pokeplaylistv3/static/js/runtime-main.e321893c.js.map",
     "static/js/2.08d1771d.chunk.js": "/pokeplaylistv3/static/js/2.08d1771d.chunk.js",
     "static/js/2.08d1771d.chunk.js.map": "/pokeplaylistv3/static/js/2.08d1771d.chunk.js.map",
     "index.html": "/pokeplaylistv3/index.html",
-    "precache-manifest.f6af502501c3d82995013ba0b3ef4a77.js": "/pokeplaylistv3/precache-manifest.f6af502501c3d82995013ba0b3ef4a77.js",
+    "precache-manifest.4f3aff6f2bf9339787dc9d26cf769e6d.js": "/pokeplaylistv3/precache-manifest.4f3aff6f2bf9339787dc9d26cf769e6d.js",
     "service-worker.js": "/pokeplaylistv3/service-worker.js",
     "static/css/main.886aa077.chunk.css.map": "/pokeplaylistv3/static/css/main.886aa077.chunk.css.map",
     "static/js/2.08d1771d.chunk.js.LICENSE.txt": "/pokeplaylistv3/static/js/2.08d1771d.chunk.js.LICENSE.txt",
@@ -26,6 +26,6 @@
     "static/js/runtime-main.e321893c.js",
     "static/js/2.08d1771d.chunk.js",
     "static/css/main.886aa077.chunk.css",
-    "static/js/main.e3386013.chunk.js"
+    "static/js/main.4af49852.chunk.js"
   ]
 }
