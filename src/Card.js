@@ -4,6 +4,8 @@ import resistance from './res/resistance.png'
 import normal from './res/normal.png'
 import './Card.css';
 
+const ALBUM_LOCATIONS = ['canadian', 'chicago', 'atl', 'dfw']
+
 const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
@@ -27,11 +29,20 @@ const getResistance = (popularity) => {
     return <div>{items}</div>
 } 
 
-const formatTracks = (tracks) => {
-    return removeParentheses(tracks.join(', '))
-}
 const removeParentheses = (string) => {
-    return string.replace(/ *\([^)]*\) */g, "")
+    return string.replace(/ *\([^)]*\) */g, "").replace(/ *\[[^)]*\] */g, '')
+  }
+
+const formatTracks = (tracks) => {
+    return tracks.map(track => removeParentheses(track)).join(', ')
+}
+
+const cleanGenre = (genre) => {
+    var cleaned = genre
+    ALBUM_LOCATIONS.forEach ((country) => {
+        cleaned = cleaned.replace(country + ' ', '')
+    })
+    return cleaned
 }
 
 const getAlbums = (albums) => {
@@ -46,7 +57,7 @@ const getAlbums = (albums) => {
             <div className="ability">
                 <img className="ability_type" src={image} style={{left:'20px'}}/>
                 <img className="ability_type" src={image} style={{left:'48px'}}/>
-                <p className="title">{removeParentheses(album.name)}</p>
+                <p className="title">{album.name}</p>
                 <p className="power">{power}</p>
                 <p className="description">{formatTracks(albumItem.tracks)}</p>
             </div>
@@ -62,7 +73,7 @@ const Card = ({genre, artistName, imageUrl, popularity, followers, albums, cardS
           <div className="card holographic">
             <div className="header_container">
               <div className="genre_container">
-                { genre }
+                { cleanGenre(genre) }
               </div>
             <p className="artist_name header_item">{artistName}</p>
             <p className="hp header_item">HP</p>

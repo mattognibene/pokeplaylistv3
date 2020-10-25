@@ -3,6 +3,14 @@ import Card from './Card'
 import NetworkModule from './SpotifyNetworkModule'
 import './Deck.css';
 
+const cleanAlbumName = (albumName) => {
+  let cleanName = removeParentheses(albumName)
+  if (cleanName.length > 33) {
+    cleanName = cleanName.substring(0, 30) + "..."
+  }
+  return cleanName
+}
+
 async function getArtistInfo(artistId, bearer) {
   var promise= NetworkModule.getData("https://api.spotify.com/v1/artists/" + artistId, bearer)
   .then(data => {
@@ -22,9 +30,15 @@ async function getArtistAlbums(artistId, bearer) {
   .then(data => {
     let items = data.items
     let albums = []
+    let seen = []
     items.forEach(function(album) {
         if (album.album_type === "album" && albums.length < 2) {
-          albums.push({name: album.name, spotifyId: album.id})
+          let cleanName = cleanAlbumName(album.name)
+          console.log(album.name)
+          if (seen.indexOf(cleanName) < 0) {
+            albums.push({name: cleanName, spotifyId: album.id})
+            seen.push(cleanName)
+          }
         } 
     });
     return albums
@@ -55,11 +69,13 @@ async function getArtistAlbums(artistId, bearer) {
   return albumsTracksCombined
 }
 
+const removeParentheses = (string) => {
+  return string.replace(/ *\([^)]*\) */g, "").replace(/ *\[[^)]*\] */g, "")
+}
+
 class Deck extends React.Component {
 
-  componentDidMount () {
-    console.log(this.props.artistIds)
-    
+  componentDidMount () {    
     getArtistInfo(this.props.artistIds[0], this.props.bearer).then(data => this.setState({firstArtistInfo: data}))
     getArtistAlbums(this.props.artistIds[0], this.props.bearer).then(data => this.setState({firstArtistAlbums: data}))
     
@@ -72,14 +88,7 @@ class Deck extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state =  {
-      // firstArtistInfo: {},
-      // firstArtistAlbums: [],
-      // secondArtistInfo: {},
-      // secondArtistAlbums: [],
-      // thirdArtistInfo: {},
-      // thirdArtistAlbums: [],
-    }
+    this.state =  {}
   }
 
   render() {

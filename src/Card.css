@@ -79,6 +79,10 @@
   .holographic {
     background-image: linear-gradient(
         to right,
+        /* rgb(0, 0, 0),
+        rgb(90, 90, 90),
+        rgb(166, 166, 166),
+        rgb(80, 80, 80) */
         rgb(194, 255, 182),
         rgb(255, 163, 182),
         rgb(221, 169, 255),

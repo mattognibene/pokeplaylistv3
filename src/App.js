@@ -4,7 +4,7 @@ import NetworkModule from './SpotifyNetworkModule'
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "62c2f22951254954a357ada4001660b6";
-const redirectUri = "https://mattognibene.github.io/pokeplaylistv3";
+const redirectUri = 'http://localhost:3000'//"https://mattognibene.github.io/pokeplaylistv3";
 const scopes = [
     "user-top-read"
 ];
@@ -63,9 +63,12 @@ class App extends React.Component {
                     Login to Spotify
                     </a>
                 )}
-                {this.state.token && this.state.artistIds &&(
+                {/* {this.state.token && this.state.artistIds &&(
                     <Deck bearer={this.state.token} artistIds={this.state.artistIds}/> 
-                )}
+                )} */
+                <Deck bearer='BQB4jQYS8KV8vPcjDMRIf-hQqE3lvzjbpJZqPqXZ0XT6SK7VIzem-M2IxNGnmyXYjm82iYKoMg3k4ytOxeZAK7JJFcokXK_7wCAtEt5qgPvL0Hmee_W4Squ6-458VXf256YKNCEyGu-wbVUP5pXduVxO-OERQm13li37BttU'
+                    artistIds={['3Nrfpe0tUJi4K4DXYWgMUX', '3Nrfpe0tUJi4K4DXYWgMUX', '3Nrfpe0tUJi4K4DXYWgMUX']} />
+            }
             </div>
             
         )
