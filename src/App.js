@@ -22,7 +22,7 @@ const hash = window.location.hash
 window.location.hash = "";
 
 async function getTopArtists(bearer) {
-    var promise= NetworkModule.getData('https://api.spotify.com/v1/me/top/artists?time_range=long_term', bearer)
+    var promise= NetworkModule.getData('https://api.spotify.com/v1/me/top/artists?time_range=medium_term', bearer)
     .then(data => {
         let items = data.items
         let artistIds = []
@@ -44,6 +44,7 @@ class App extends React.Component {
             this.setState({
                 token: _token
             });
+            console.log(_token)
             getTopArtists(_token).then(data => this.setState({artistIds: data}))
         }
     }
@@ -63,12 +64,12 @@ class App extends React.Component {
                     Login to Spotify
                     </a>
                 )}
-                {/* {this.state.token && this.state.artistIds &&(
+                {/*this.state.token && this.state.artistIds &&(
                     <Deck bearer={this.state.token} artistIds={this.state.artistIds}/> 
-                )} */
-                <Deck bearer='BQB4jQYS8KV8vPcjDMRIf-hQqE3lvzjbpJZqPqXZ0XT6SK7VIzem-M2IxNGnmyXYjm82iYKoMg3k4ytOxeZAK7JJFcokXK_7wCAtEt5qgPvL0Hmee_W4Squ6-458VXf256YKNCEyGu-wbVUP5pXduVxO-OERQm13li37BttU'
-                    artistIds={['3Nrfpe0tUJi4K4DXYWgMUX', '3Nrfpe0tUJi4K4DXYWgMUX', '3Nrfpe0tUJi4K4DXYWgMUX']} />
-            }
+                )*/
+                <Deck bearer='BQA_8s11SUA5syouAGC1r6a4x8wyfT-JRBM7FY8FzQvx89GqT_91I5_rU4MOawXtrzngbbeDeXj9RycWgPZiLve0zW3vo5DHOjt6WKRuhQlrAMpXFK6awpw1OmXWRtszdw7EW9ZDh7f2111hc0gF7-GpZIyBV-kL7__iQHMt'
+                    artistIds={['0L8ExT028jH3ddEcZwqJJ5', '7wg1qvie3KqDNQbAkTdbX0', '3TVXtAsR1Inumwj472S9r4']} />
+                }
             </div>
             
         )

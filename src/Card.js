@@ -2,9 +2,13 @@ import React from 'react';
 import fire from './res/fire.png';
 import resistance from './res/resistance.png'
 import normal from './res/normal.png'
+import metal from './res/metal.png'
+import psychic from './res/psychic.png'
+import electric from './res/electric.png'
+import ghost from './res/ghost.png'
 import './Card.css';
 
-const ALBUM_LOCATIONS = ['canadian', 'chicago', 'atl', 'dfw']
+const ALBUM_LOCATIONS = ['canadian', 'chicago', 'atl', 'dfw', 'east coast', 'west coast', 'boston', 'florida', 'miami']
 
 const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -29,25 +33,78 @@ const getResistance = (popularity) => {
     return <div>{items}</div>
 } 
 
+const getType = (genre) => {
+    if (genre) {
+        if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime')) {
+            return metal
+        }
+        else if (genre.includes('pop')) {
+            return psychic
+        }
+        else if (genre.includes('edm') || genre.includes('electro') || genre.includes('dubstep')) {
+            return electric
+        }
+        else if (genre.includes('r&b')) {
+            return ghost
+        }
+    }
+    return normal
+}
+
+const getHolographicClass = (genre) => {
+    if (genre) {
+        if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime')) {
+            return 'holographic_hip_hop'
+        }
+        else if (genre.includes('pop')) {
+            return 'holographic_pop'
+        }
+        else if (genre.includes('edm') || genre.includes('electro') || genre.includes('dubstep')) {
+            return 'holographic_electro'
+        } 
+        else if (genre.includes('r&b')) {
+            return 'holographic_rb'
+        }
+    }
+    return 'holographic_pop'
+}
+
+const getTextColor = (genre) => {
+    if (genre) {
+        if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime')) {
+            return '#FFFFFF'
+        }
+    }
+    return '#000000'
+}
+
 const removeParentheses = (string) => {
     return string.replace(/ *\([^)]*\) */g, "").replace(/ *\[[^)]*\] */g, '')
   }
 
 const formatTracks = (tracks) => {
-    return tracks.map(track => removeParentheses(track)).join(', ')
+    let cleaned = tracks.map(track => removeParentheses(track)).join(', ')
+    if (cleaned.length > 100) {
+        return cleaned.substring(0, 97) + "..."
+    } else {
+        return cleaned
+    }
 }
 
 const cleanGenre = (genre) => {
-    var cleaned = genre
-    ALBUM_LOCATIONS.forEach ((country) => {
-        cleaned = cleaned.replace(country + ' ', '')
-    })
-    return cleaned
+    if (genre) {
+        var cleaned = genre
+        ALBUM_LOCATIONS.forEach ((country) => {
+            cleaned = cleaned.replace(country + ' ', '')
+        })
+        return cleaned
+    }
+    return ""
 }
 
-const getAlbums = (albums) => {
+const getAlbums = (albums, genre) => {
     const albumsRows = []
-    var image = fire
+    var image = getType(genre)
     const powers = [100, 80, 60, 120, 90]
     albums.forEach(albumItem => {
         let album = albumItem.album
@@ -57,9 +114,9 @@ const getAlbums = (albums) => {
             <div className="ability">
                 <img className="ability_type" src={image} style={{left:'20px'}}/>
                 <img className="ability_type" src={image} style={{left:'48px'}}/>
-                <p className="title">{album.name}</p>
-                <p className="power">{power}</p>
-                <p className="description">{formatTracks(albumItem.tracks)}</p>
+                <p className="title" style={{color: getTextColor(genre)}}>{album.name}</p>
+                <p className="power" style={{color: getTextColor(genre)}}>{power}</p>
+                <p className="description" style={{color: getTextColor(genre)}}>{formatTracks(albumItem.tracks)}</p>
             </div>
             )
             image = normal
@@ -68,23 +125,31 @@ const getAlbums = (albums) => {
     return albumsRows
 }
 
+const formatArtistName = (artistName, genre) => {
+    let totalLength = artistName.length + genre.length
+    if (totalLength > 30) {
+        return artistName.substring(0, 30 - genre.length) + "..."
+    }
+    return artistName
+}
+
 const Card = ({genre, artistName, imageUrl, popularity, followers, albums, cardStyle}) => 
         <div className="card_border" style={cardStyle}>
-          <div className="card holographic">
+          <div className={"card " + getHolographicClass(genre)}>
             <div className="header_container">
-              <div className="genre_container">
-                { cleanGenre(genre) }
-              </div>
-            <p className="artist_name header_item">{artistName}</p>
-            <p className="hp header_item">HP</p>
-            <p className="hp_value header_item">170</p>
-            <img className="type header_item" src={fire}/>
+                <div className="genre_container">
+                    { cleanGenre(genre) }
+                </div>
+                <p className="artist_name header_item" style={{color: getTextColor(genre)}}>{artistName}</p>
+                <p className="hp header_item" style={{color: getTextColor(genre)}}>HP</p>
+                <p className="hp_value header_item" style={{color: getTextColor(genre)}}>170</p>
+                <img className="type header_item" src={getType(genre)}/>
             </div>
             <div className="artist_container">
               <img className="artist" src={imageUrl}/>
               <p id="artist_description"></p>
             </div>
-            {getAlbums(albums)}
+            {getAlbums(albums, genre)}
             <div id="bottom_container">
                 <div id="line_seperator"/>
                 <div id="bottom_stats">

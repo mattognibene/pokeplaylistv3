@@ -32,9 +32,8 @@ async function getArtistAlbums(artistId, bearer) {
     let albums = []
     let seen = []
     items.forEach(function(album) {
-        if (album.album_type === "album" && albums.length < 2) {
+        if (album.album_type === "album" && albums.length < 2 && !album.name.toLowerCase().includes('live')) {
           let cleanName = cleanAlbumName(album.name)
-          console.log(album.name)
           if (seen.indexOf(cleanName) < 0) {
             albums.push({name: cleanName, spotifyId: album.id})
             seen.push(cleanName)
@@ -51,6 +50,7 @@ async function getArtistAlbums(artistId, bearer) {
     .then(data => {
       let items = data.items
       let tracks = []
+      
       items.forEach(function(track) {
           if (tracks.length < 6) {
             tracks.push(track.name)
@@ -76,14 +76,20 @@ const removeParentheses = (string) => {
 class Deck extends React.Component {
 
   componentDidMount () {    
-    getArtistInfo(this.props.artistIds[0], this.props.bearer).then(data => this.setState({firstArtistInfo: data}))
-    getArtistAlbums(this.props.artistIds[0], this.props.bearer).then(data => this.setState({firstArtistAlbums: data}))
+    if (this.props.artistIds[0]) {
+      getArtistInfo(this.props.artistIds[0], this.props.bearer).then(data => this.setState({firstArtistInfo: data}))
+      getArtistAlbums(this.props.artistIds[0], this.props.bearer).then(data => this.setState({firstArtistAlbums: data}))
+    }
     
-    getArtistInfo(this.props.artistIds[1], this.props.bearer).then(data => this.setState({secondArtistInfo: data}))
-    getArtistAlbums(this.props.artistIds[1], this.props.bearer).then(data => this.setState({secondArtistAlbums: data}))
-
-    getArtistInfo(this.props.artistIds[2], this.props.bearer).then(data => this.setState({thirdArtistInfo: data}))
-    getArtistAlbums(this.props.artistIds[2], this.props.bearer).then(data => this.setState({thirdArtistAlbums: data}))
+    if (this.props.artistIds[1]) {
+      getArtistInfo(this.props.artistIds[1], this.props.bearer).then(data => this.setState({secondArtistInfo: data}))
+      getArtistAlbums(this.props.artistIds[1], this.props.bearer).then(data => this.setState({secondArtistAlbums: data}))
+    }
+    
+    if (this.props.artistIds[2]) {
+      getArtistInfo(this.props.artistIds[2], this.props.bearer).then(data => this.setState({thirdArtistInfo: data}))
+      getArtistAlbums(this.props.artistIds[2], this.props.bearer).then(data => this.setState({thirdArtistAlbums: data}))
+    }
   }
 
   constructor(props) {

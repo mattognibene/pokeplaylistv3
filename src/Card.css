@@ -51,6 +51,8 @@
     font-size: 1.6em;
     font-weight: 700;
     font-family: 'Roboto Condensed';
+    text-overflow: ellipsis;
+    outline: 2px solid red;
   }
   
   .header_container {
@@ -75,22 +77,46 @@
     right: 50px;
     position: absolute;
   }
+
+  .holographic_rb {
+    background-image: radial-gradient( 
+        circle farthest-corner at 10% 20%,  
+        rgba(62,133,238,1) 1.1%,
+         rgba(227,137,240,1) 43.7%, 
+         rgba(243,193,124,1) 89.7% );
+    background-size: 200%;
+  }
   
-  .holographic {
+  .holographic_pop {
     background-image: linear-gradient(
         to right,
-        /* rgb(0, 0, 0),
-        rgb(90, 90, 90),
-        rgb(166, 166, 166),
-        rgb(80, 80, 80) */
         rgb(194, 255, 182),
         rgb(255, 163, 182),
         rgb(221, 169, 255),
         rgb(162, 209, 255)
-    );
+    ); 
     background-size: 200%;
   }
-  
+
+  .holographic_hip_hop {
+    background-image: linear-gradient(
+        to right,
+        rgb(0, 0, 0),
+        rgb(90, 90, 90),
+        rgb(166, 166, 166),
+        rgb(80, 80, 80) 
+    ); 
+    background-size: 200%;
+  }
+
+  .holographic_electro {
+    background-image: radial-gradient( 
+        circle farthest-corner at 10% 20%, 
+         rgba(255,37,174,1) 0%, 
+         rgba(241,147,55,1) 53.4%,
+        rgba(250,237,56,1) 99.5% );
+        background-size: 200%;
+  }
   .type {
     width: 30px;
     position: absolute;
