@@ -1,6 +1,7 @@
 import React from 'react';
 import Deck from './Deck';
 import NetworkModule from './SpotifyNetworkModule'
+import './App.css';
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "62c2f22951254954a357ada4001660b6";
@@ -68,7 +69,7 @@ class App extends React.Component {
                     <Deck bearer={this.state.token} artistIds={this.state.artistIds}/> 
                 )*/
                 <Deck bearer='BQA_8s11SUA5syouAGC1r6a4x8wyfT-JRBM7FY8FzQvx89GqT_91I5_rU4MOawXtrzngbbeDeXj9RycWgPZiLve0zW3vo5DHOjt6WKRuhQlrAMpXFK6awpw1OmXWRtszdw7EW9ZDh7f2111hc0gF7-GpZIyBV-kL7__iQHMt'
-                    artistIds={['0L8ExT028jH3ddEcZwqJJ5', '7wg1qvie3KqDNQbAkTdbX0', '3TVXtAsR1Inumwj472S9r4']} />
+                    artistIds={['7pbDxGE6nQSZVfiFdq9lOL', '7wg1qvie3KqDNQbAkTdbX0', '3TVXtAsR1Inumwj472S9r4']} />
                 }
             </div>
             

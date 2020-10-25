@@ -94,12 +94,14 @@ class Deck extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state =  {}
+    this.state =  {
+      zoom: window.innerWidth / 1600 // todo hardcoded
+    }
   }
 
   render() {
     return (
-      <div className="deck_container">
+      <div className="deck_container" style={{zoom: this.state.zoom}}>
         {this.state.thirdArtistInfo && this.state.thirdArtistAlbums && (
         <Card
           genre={this.state.thirdArtistInfo.genre}

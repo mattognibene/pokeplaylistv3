@@ -78,6 +78,15 @@ const getTextColor = (genre) => {
     return '#000000'
 }
 
+const getArtistName = (artistName, genre) => {
+    let total_length = parseInt(1.6 * artistName.length) + genre.length
+    if (total_length > 48) {
+        return artistName.substring(0, parseInt((48 - genre.length) / 1.6) - 5) + "..."
+    } else {
+        return artistName
+    }
+}
+
 const removeParentheses = (string) => {
     return string.replace(/ *\([^)]*\) */g, "").replace(/ *\[[^)]*\] */g, '')
   }
@@ -140,7 +149,7 @@ const Card = ({genre, artistName, imageUrl, popularity, followers, albums, cardS
                 <div className="genre_container">
                     { cleanGenre(genre) }
                 </div>
-                <p className="artist_name header_item" style={{color: getTextColor(genre)}}>{artistName}</p>
+                <p className="artist_name header_item" style={{color: getTextColor(genre)}}>{getArtistName(artistName, genre)}</p>
                 <p className="hp header_item" style={{color: getTextColor(genre)}}>HP</p>
                 <p className="hp_value header_item" style={{color: getTextColor(genre)}}>170</p>
                 <img className="type header_item" src={getType(genre)}/>
