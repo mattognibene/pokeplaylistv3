@@ -12,7 +12,7 @@ import water from './res/water.png'
 import './Card.css';
 
 const ALBUM_FILTER = ['canadian', 'chicago', 'atl', 'dfw', 'east coast', 'west coast', 'boston', 'florida', 'miami', 'contemporary',
-'modern']
+'modern', 'la']
 
 const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

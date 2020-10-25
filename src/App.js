@@ -5,7 +5,7 @@ import './App.css';
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "62c2f22951254954a357ada4001660b6";
-const redirectUri = "https://mattognibene.github.io/pokeplaylistv3";
+const redirectUri = "https://mattognibene.github.io/pokeplaylistv3"; //'http://localhost:3000'//
 const scopes = [
     "user-top-read"
 ];
@@ -69,8 +69,8 @@ class App extends React.Component {
                     <Deck bearer={this.state.token} artistIds={this.state.artistIds}/> 
                 )
                 /*<Deck bearer='BQBLJUOLLpHDoSNJFx5cvayY90C-GsqkZ_NTjvnOabCQK7PKwsLZZVSE2WemltIW1RyrHuTdKQUwSIcoiCxenBYFg3OBsbHKFT2VZ4HPAvOnaZkJe3Meupm_3m-4xtXCUwmsbj2U_ztpUMtIdWsHfQvU7cQm4y25jUk5WLXg'
-                    artistIds={['2HSEdXKVq1WWtBbsIeNjRX', '1UTPBmNbXNTittyMJrNkvw', '7wg1qvie3KqDNQbAkTdbX0']} /> */
-                }
+                    artistIds={['2HSEdXKVq1WWtBbsIeNjRX', '1UTPBmNbXNTittyMJrNkvw', '7wg1qvie3KqDNQbAkTdbX0']} /> 
+                */}
             </div>
             
         )

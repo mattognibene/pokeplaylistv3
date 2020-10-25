@@ -1,7 +1,6 @@
 .deck_container {
     position: relative;
     padding-top: 75px;
-    -webkit-text-size-adjust: none;
 }
 
 .artist_card {
