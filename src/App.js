@@ -5,7 +5,7 @@ import sample from './res/sample.png'
 import './App.css';
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
-const clientId = "62c2f22951254954a357ada4001660b6";
+const clientId = "453ceedee5f94e42a7dc49bb1c00b5df";
 const redirectUri =  "https://mattognibene.github.io/pokeplaylistv3";
 const scopes = [
     "user-top-read"
@@ -32,9 +32,7 @@ class App extends React.Component {
             // Set token
             this.setState({
                 token: _token
-            });
-            console.log(_token) // TODO remove
-            
+            });            
         }
     }
     constructor(props) {

@@ -11,6 +11,8 @@
   margin: 4px 10px;
   cursor: pointer;
   border-radius: 7px;
+  z-index: 99;
+  position: relative;
 }
 .login_container {
   margin-top: 5vh;
