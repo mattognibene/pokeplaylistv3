@@ -107,6 +107,7 @@
 
   .holographic_country {
     background-image: radial-gradient( circle 880px at -0.7% 57.1%,  rgba(202,149,149,1) 0%, rgba(239,215,177,1) 14.3%, rgba(239,239,177,1) 27.4%, rgba(191,239,177,1) 40.1%, rgba(177,239,217,1) 48.7%, rgba(177,238,239,1) 56.7%, rgba(177,180,239,1) 73.2%, rgba(224,177,239,1) 89.8%, rgba(239,177,231,1) 100.2% );
+    background-size:200%
   }
 
   .holographic_hip_hop {
@@ -118,6 +119,10 @@
         rgb(80, 80, 80) 
     ); 
     background-size: 200%;
+  }
+
+  .holographic_emo {
+    background-image: linear-gradient( 112.1deg,  rgba(32,38,57,1) 11.4%, rgba(63,76,119,1) 70.2% );
   }
 
   .holographic_electro {

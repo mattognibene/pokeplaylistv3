@@ -12,7 +12,7 @@ import water from './res/water.png'
 import './Card.css';
 
 const ALBUM_FILTER = ['canadian', 'chicago', 'atl', 'dfw', 'east coast', 'west coast', 'boston', 'florida', 'miami', 'contemporary',
-'modern', 'la']
+'modern', 'la', 'albany', 'ny']
 
 const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -39,26 +39,29 @@ const getResistance = (popularity) => {
 
 const getType = (genre) => {
     if (genre) {
-        if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime')) {
+        if (genre.includes('emo') || genre.includes('punk')) {
+            return ghost
+        }
+        else if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime') || genre.includes('hard') || genre.includes('metal')) {
             return metal
         }
         else if (genre.includes('pop')) {
             return psychic
         }
-        else if (genre.includes('edm') || genre.includes('electro') || genre.includes('dubstep') || genre.includes('latin')) {
+        else if (genre.includes('edm') || genre.includes('electro') || genre.includes('dubstep') || genre.includes('brostep') || genre.includes('latin')) {
             return electric
         }
         else if (genre.includes('r&b')) {
-            return ghost
+            return fire
         }
         else if (genre.includes('indie')) {
             return water
         }
-        else if (genre.includes('rock')) {
-            return fighting
-        } 
         else if (genre.includes('country') || genre.includes('folk')) {
             return grass
+        }
+        else if (genre.includes('rock')) {
+            return fighting
         }
     }
     return normal
@@ -66,13 +69,16 @@ const getType = (genre) => {
 
 const getHolographicClass = (genre) => {
     if (genre) {
-        if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime')) {
+        if (genre.includes('emo') || genre.includes('punk')) {
+            return 'holographic_emo'
+        }
+        else if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime') || genre.includes('hard') || genre.includes('metal')) {
             return 'holographic_hip_hop'
         }
         else if (genre.includes('pop')) {
             return 'holographic_pop'
         }
-        else if (genre.includes('edm') || genre.includes('electro') || genre.includes('dubstep')) {
+        else if (genre.includes('edm') || genre.includes('electro') || genre.includes('dubstep') || genre.includes('brostep') || genre.includes('latin')) {
             return 'holographic_electro'
         } 
         else if (genre.includes('r&b')) {
@@ -81,11 +87,11 @@ const getHolographicClass = (genre) => {
         else if (genre.includes('indie')) {
             return 'holographic_indie'
         }
-        else if (genre.includes('rock')) {
-            return 'holographic_rock'
-        } 
         else if (genre.includes('country') || genre.includes('folk')) {
             return 'holographic_country'
+        }
+        else if (genre.includes('rock')) {
+            return 'holographic_rock'
         }
     }
     return 'holographic_pop'
@@ -96,7 +102,8 @@ const getTextColor = (genre) => {
         if (genre.includes('indie')) {
             return '#000000'
         }
-        if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime')|| genre.includes('rock')) {
+        if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime')|| genre.includes('rock') ||
+        genre.includes('emo') || genre.includes('punk')) {
             return '#FFFFFF'
         }
     }

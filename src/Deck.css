@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+
 .deck_container {
     position: relative;
     padding-top: 75px;
@@ -7,4 +9,13 @@
     position: absolute;
     right: 0px;
     outline: 2px solid red;
+}
+
+.results {
+    text-align: center;
+    font-family: 'Roboto';
+}
+
+.time_container {
+    margin-top: 5vh;
 }

@@ -1,11 +1,12 @@
 import React from 'react';
 import Deck from './Deck';
 import NetworkModule from './SpotifyNetworkModule'
+import sample from './res/sample.png'
 import './App.css';
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "62c2f22951254954a357ada4001660b6";
-const redirectUri = "https://mattognibene.github.io/pokeplaylistv3"; //'http://localhost:3000'//
+const redirectUri =  'http://localhost:3000';//"https://mattognibene.github.io/pokeplaylistv3";
 const scopes = [
     "user-top-read"
 ];
@@ -22,19 +23,6 @@ const hash = window.location.hash
   }, {});
 window.location.hash = "";
 
-async function getTopArtists(bearer) {
-    var promise= NetworkModule.getData('https://api.spotify.com/v1/me/top/artists?time_range=medium_term', bearer)
-    .then(data => {
-        let items = data.items
-        let artistIds = []
-        for(var i = 0; i < 3; i++) {
-            artistIds.push(items[i].id)
-        }
-        return artistIds
-    })
-    return await promise
-}
-
 class App extends React.Component {
 
     componentDidMount() {
@@ -45,8 +33,8 @@ class App extends React.Component {
             this.setState({
                 token: _token
             });
-            console.log(_token)
-            getTopArtists(_token).then(data => this.setState({artistIds: data}))
+            console.log(_token) // TODO remove
+            
         }
     }
     constructor(props) {
@@ -57,20 +45,30 @@ class App extends React.Component {
     render() {
         return (
             <div>
+            
                 {!this.state.token && (
-                    <a
-                    className="btn btn--loginApp-link"
-                    href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}
-                    >
-                    Login to Spotify
-                    </a>
+                    <div className="login_container">
+                        <h1>PokéPlaylist</h1>
+                        <h3>Get your favorite artists as Pokémon cards.</h3>
+                        <a
+                        className="btn"
+                        href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`}
+                        >
+                        Login to Spotify
+                        </a>
+                        <div className="sample_container">
+                            <img className='sample' src={sample} />
+                        </div>
+                        <div>Created by <a className="created_by_link" href="https://www.mattognibene.com">Matt Ognibene</a></div>
+                        </div>
                 )}
-                {this.state.token && this.state.artistIds &&(
-                    <Deck bearer={this.state.token} artistIds={this.state.artistIds}/> 
+                
+                {this.state.token && (
+                    <Deck bearer={this.state.token}/> 
                 )
-                /*<Deck bearer='BQBLJUOLLpHDoSNJFx5cvayY90C-GsqkZ_NTjvnOabCQK7PKwsLZZVSE2WemltIW1RyrHuTdKQUwSIcoiCxenBYFg3OBsbHKFT2VZ4HPAvOnaZkJe3Meupm_3m-4xtXCUwmsbj2U_ztpUMtIdWsHfQvU7cQm4y25jUk5WLXg'
-                    artistIds={['2HSEdXKVq1WWtBbsIeNjRX', '1UTPBmNbXNTittyMJrNkvw', '7wg1qvie3KqDNQbAkTdbX0']} /> 
-                */}
+                /*<Deck bearer='BQC3ouKLIZSE1Csp1hyffkrfIy_QeYhNtNFwEBfYhdkM6EbWp8sBjBwOeDKA3mkGNFHwfS8Q8kiBRSRwr63W733VRSsuUMKDgglTWLE9HZruy6CrqA7ciIjpQaQyVsPm2cF5FLPtmK-sIn-n6RZ9jX4Hl7wQEMSNcc8m4FSQ'
+                    artistIds={['04gDigrS5kc9YWfZHwBETP', '1UTPBmNbXNTittyMJrNkvw', '2kCcBybjl3SAtIcwdWpUe3']} /> */ 
+                }
             </div>
             
         )

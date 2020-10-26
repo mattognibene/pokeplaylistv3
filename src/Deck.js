@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './Card'
 import NetworkModule from './SpotifyNetworkModule'
 import './Deck.css';
+import './App.css';
 
 const cleanAlbumName = (albumName) => {
   let cleanName = removeParentheses(albumName)
@@ -11,6 +12,18 @@ const cleanAlbumName = (albumName) => {
   return cleanName
 }
 
+async function getTopArtists(bearer, timeRange) {
+  var promise= NetworkModule.getData('https://api.spotify.com/v1/me/top/artists?time_range=' + timeRange, bearer)
+  .then(data => {
+      let items = data.items
+      let artistIds = []
+      for(var i = 0; i < 3; i++) {
+          artistIds.push(items[i].id)
+      }
+      return artistIds
+  })
+  return await promise
+}
 async function getArtistInfo(artistId, bearer) {
   var promise= NetworkModule.getData("https://api.spotify.com/v1/artists/" + artistId, bearer)
   .then(data => {
@@ -73,69 +86,103 @@ const removeParentheses = (string) => {
   return string.replace(/ *\([^)]*\) */g, "").replace(/ *\[[^)]*\] */g, "")
 }
 
+const getTimeRangeString = (timeRange) => {
+  if (timeRange == "short_term") {
+    return "over the last month"
+  } else if (timeRange == "medium_term") {
+    return "over the last six months"
+  } else {
+    return "of all time"
+  }
+}
+
 class Deck extends React.Component {
 
-  componentDidMount () {    
-    if (this.props.artistIds[0]) {
-      getArtistInfo(this.props.artistIds[0], this.props.bearer).then(data => this.setState({firstArtistInfo: data}))
-      getArtistAlbums(this.props.artistIds[0], this.props.bearer).then(data => this.setState({firstArtistAlbums: data}))
-    }
-    
-    if (this.props.artistIds[1]) {
-      getArtistInfo(this.props.artistIds[1], this.props.bearer).then(data => this.setState({secondArtistInfo: data}))
-      getArtistAlbums(this.props.artistIds[1], this.props.bearer).then(data => this.setState({secondArtistAlbums: data}))
-    }
-    
-    if (this.props.artistIds[2]) {
-      getArtistInfo(this.props.artistIds[2], this.props.bearer).then(data => this.setState({thirdArtistInfo: data}))
-      getArtistAlbums(this.props.artistIds[2], this.props.bearer).then(data => this.setState({thirdArtistAlbums: data}))
-    }
+  updateState = (timeRange, bearer) => {
+    getTopArtists(bearer, timeRange).then((artistIds) => {
+      this.state.timeRange = timeRange
+      if (artistIds[0]) {
+        getArtistInfo(artistIds[0], bearer).then(data => this.setState({firstArtistInfo: data}))
+        getArtistAlbums(artistIds[0], bearer).then(data => this.setState({firstArtistAlbums: data}))
+      }
+      
+      if (artistIds[1]) {
+        getArtistInfo(artistIds[1], bearer).then(data => this.setState({secondArtistInfo: data}))
+        getArtistAlbums(artistIds[1], bearer).then(data => this.setState({secondArtistAlbums: data}))
+      }
+      
+      if (artistIds[2]) {
+        getArtistInfo(artistIds[2], bearer).then(data => this.setState({thirdArtistInfo: data}))
+        getArtistAlbums(artistIds[2], bearer).then(data => this.setState({thirdArtistAlbums: data}))
+      }
+    });
+  }
+
+  componentDidMount () {  
+    this.updateState('medium_term', this.props.bearer)
   }
 
   constructor(props) {
     super(props)
     this.state =  {
-      scale: Math.min(1, window.innerWidth / 1600) // todo hardcoded
+      scale: Math.min(1, window.innerWidth / 1600), // todo hardcoded
+      bearer: this.props.bearer
     }
   }
 
   render() {
     return (
-      <div className="deck_container" style={{transform: 'scale(' + this.state.scale + ')'} }>
-        {this.state.thirdArtistInfo && this.state.thirdArtistAlbums && (
-        <Card
-          genre={this.state.thirdArtistInfo.genre}
-          artistName={this.state.thirdArtistInfo.name}
-          imageUrl={this.state.thirdArtistInfo.imageUrl}
-          popularity={this.state.thirdArtistInfo.popularity}
-          followers={this.state.thirdArtistInfo.followers}
-          albums={this.state.thirdArtistAlbums}
-          cardStyle={{left: '375px', zIndex: 1, top: '50px', transform: 'rotate(30deg)'}}
-          />
-        )}
-        {this.state.secondArtistInfo && this.state.secondArtistAlbums && (
-        <Card
-          genre={this.state.secondArtistInfo.genre}
-          artistName={this.state.secondArtistInfo.name}
-          imageUrl={this.state.secondArtistInfo.imageUrl}
-          popularity={this.state.secondArtistInfo.popularity}
-          followers={this.state.secondArtistInfo.followers}
-          albums={this.state.secondArtistAlbums}
-          cardStyle={{left: '-375px', marginTop: '-648px', zIndex: 1, transform: 'rotate(-30deg)'}}
-          />
-        )}
-        
-        {this.state.firstArtistInfo && this.state.firstArtistAlbums && (
-        <Card
-          genre={this.state.firstArtistInfo.genre}
-          artistName={this.state.firstArtistInfo.name}
-          imageUrl={this.state.firstArtistInfo.imageUrl}
-          popularity={this.state.firstArtistInfo.popularity}
-          followers={this.state.firstArtistInfo.followers}
-          albums={this.state.firstArtistAlbums}
-          cardStyle={{left: '0px', marginTop: '-760px', zIndex: 2}}
-          />
-        )}
+      <div>
+        <div className="results">
+          <div className="time_container">
+            <div className="btn" onClick={() => this.updateState('short_term', this.state.bearer)}>Last Month</div>
+            <div className="btn" onClick={() => this.updateState('medium_term', this.state.bearer)}>Last 6 Months</div>
+            <div className="btn" onClick={() => this.updateState('long_term', this.state.bearer)}>All Time</div>
+          </div>
+          {this.state.firstArtistInfo && (
+            <h1>{this.state.firstArtistInfo.name}, I choose you!</h1>
+          )}
+          <h3>Your top 3 artists {getTimeRangeString(this.state.timeRange)}.</h3>
+        </div>
+        <div className="deck_container" style={{transform: 'scale(' + this.state.scale + ')'} }>
+          {this.state.thirdArtistInfo && this.state.thirdArtistAlbums && (
+          <Card
+            genre={this.state.thirdArtistInfo.genre}
+            artistName={this.state.thirdArtistInfo.name}
+            imageUrl={this.state.thirdArtistInfo.imageUrl}
+            popularity={this.state.thirdArtistInfo.popularity}
+            followers={this.state.thirdArtistInfo.followers}
+            albums={this.state.thirdArtistAlbums}
+            cardStyle={{left: '375px', zIndex: 1, top: '50px', transform: 'rotate(30deg)'}}
+            />
+          )}
+          {this.state.secondArtistInfo && this.state.secondArtistAlbums && (
+          <Card
+            genre={this.state.secondArtistInfo.genre}
+            artistName={this.state.secondArtistInfo.name}
+            imageUrl={this.state.secondArtistInfo.imageUrl}
+            popularity={this.state.secondArtistInfo.popularity}
+            followers={this.state.secondArtistInfo.followers}
+            albums={this.state.secondArtistAlbums}
+            cardStyle={{left: '-375px', marginTop: '-648px', zIndex: 1, transform: 'rotate(-30deg)'}}
+            />
+          )}
+          
+          {this.state.firstArtistInfo && this.state.firstArtistAlbums && (
+          <Card
+            genre={this.state.firstArtistInfo.genre}
+            artistName={this.state.firstArtistInfo.name}
+            imageUrl={this.state.firstArtistInfo.imageUrl}
+            popularity={this.state.firstArtistInfo.popularity}
+            followers={this.state.firstArtistInfo.followers}
+            albums={this.state.firstArtistAlbums}
+            cardStyle={{left: '0px', marginTop: '-760px', zIndex: 2}}
+            />
+          )}
+        </div>
+        <div className="results">
+          <h4 style={{marginTop: '100px'}}>Created with PokéPlaylist</h4>
+        </div>
       </div>
     );
   }
