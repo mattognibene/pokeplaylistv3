@@ -1,29 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
 
-.deck_container {
+#deck_container {
     position: relative;
 }
 
+@media (max-width: 1500px) {
+    #deck_container {
+        position: relative;
+        margin-top: -10vh;
+    }
+}
+
+@media (max-width: 1300px) {
+    #deck_container {
+        position: relative;
+        margin-top: -20vh;
+    }
+}
+
+@media (max-width: 1000px) {
+    #deck_container {
+        position: relative;
+        margin-top: -20vh;
+    }
+}
+
+@media (max-width: 800px) {
+    #deck_container {
+        position: relative;
+        margin-top: -25vh;
+    }
+}
+
+@media (max-width: 600px) {
+    #deck_container {
+        position: relative;
+        margin-top: -30vh;
+    }
+}
+
 @media (max-width: 450px) {
-    .deck_container {
+    #deck_container {
         position: relative;
-
-        left: -1vw;
+        margin-top: -40vh;
+        margin-left: -5vw;
     }
 }
 
-@media (max-width: 375) {
-    .scale_container {
-        position: relative;
-
-        margin-left: -50vw;
-    }
-}
 
 .artist_card {
     position: absolute;
     right: 0px;
-    outline: 2px solid red;
 }
 
 .results {

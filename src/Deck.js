@@ -3,6 +3,9 @@ import Card from './Card'
 import NetworkModule from './SpotifyNetworkModule'
 import './Deck.css';
 import './App.css';
+import * as htmlToImage from 'html-to-image';
+import { toPng } from 'html-to-image';
+import download from 'downloadjs'
 
 const cleanAlbumName = (albumName) => {
   let cleanName = removeParentheses(albumName)
@@ -95,7 +98,17 @@ const getTimeRangeString = (timeRange) => {
     return "of all time"
   }
 }
-
+const downloadImage = () => {
+  var node = document.getElementById('deck_container');
+ 
+  htmlToImage.toPng(node)
+    .then(function (dataUrl) {
+      download(dataUrl, 'pokeplaylist.png');
+    })
+    .catch(function (error) {
+      console.error('oops, something went wrong!', error);
+    });
+}
 class Deck extends React.Component {
 
   updateState = (timeRange, bearer) => {
@@ -145,8 +158,7 @@ class Deck extends React.Component {
           <h3>Your top 3 artists {getTimeRangeString(this.state.timeRange)}.</h3>
         </div>
         <div className="scale_container" style={{height:parseInt(this.state.scale * 765).toString() + 'px'}}>
-          <div className="deck_container" style={{transform: 'scale(' + this.state.scale + ')',
-          top: parseInt((-1/this.state.scale) * 7).toString() + 'vh'}}> 
+          <div id="deck_container" style={{transform: 'scale(' + this.state.scale + ')'}}> 
             {this.state.thirdArtistInfo && this.state.thirdArtistAlbums && (
             <Card
               genre={this.state.thirdArtistInfo.genre}
@@ -182,9 +194,10 @@ class Deck extends React.Component {
               />
             )}
           </div>
-        </div>
-        <div className="results">
-          <h4 style={{marginTop: '100px'}}>Created with PokéPlaylist</h4>
+          <div className="results">
+              {/* <div style={{marginTop: '100px'}} className="btn" onClick={() => downloadImage()}>Download Image</div> */}
+              <h4 style={{marginTop: '10px'}}>Created with PokéPlaylist</h4>
+            </div>
         </div>
       </div>
     );
