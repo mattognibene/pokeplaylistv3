@@ -63,9 +63,6 @@ class App extends React.Component {
                 {this.state.token && (
                     <Deck bearer={this.state.token}/> 
                 )
-                
-                /*<Deck bearer='BQC3ouKLIZSE1Csp1hyffkrfIy_QeYhNtNFwEBfYhdkM6EbWp8sBjBwOeDKA3mkGNFHwfS8Q8kiBRSRwr63W733VRSsuUMKDgglTWLE9HZruy6CrqA7ciIjpQaQyVsPm2cF5FLPtmK-sIn-n6RZ9jX4Hl7wQEMSNcc8m4FSQ'
-                    artistIds={['04gDigrS5kc9YWfZHwBETP', '1UTPBmNbXNTittyMJrNkvw', '2kCcBybjl3SAtIcwdWpUe3']} /> */ 
                 }
             </div>
             

@@ -112,8 +112,8 @@ const getTextColor = (genre) => {
 
 const getArtistName = (artistName, genre) => {
     let total_length = parseInt(1.2 * artistName.length) + genre.length
-    if (total_length > 40) {
-        return artistName.substring(0, parseInt((40 - genre.length) / 1.2) - 5) + "..."
+    if (total_length > 35) {
+        return artistName.substring(0, parseInt((35 - genre.length) / 1.2) - 1) + "..."
     } else {
         return artistName
     }
@@ -164,14 +164,6 @@ const getAlbums = (albums, genre) => {
         }
     });
     return albumsRows
-}
-
-const formatArtistName = (artistName, genre) => {
-    let totalLength = artistName.length + genre.length
-    if (totalLength > 30) {
-        return artistName.substring(0, 30 - genre.length) + "..."
-    }
-    return artistName
 }
 
 const Card = ({genre, artistName, imageUrl, popularity, followers, albums, cardStyle}) => 
