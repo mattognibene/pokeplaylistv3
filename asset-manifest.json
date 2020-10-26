@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/pokeplaylistv3/static/css/main.58dd2d22.chunk.css",
-    "main.js": "/pokeplaylistv3/static/js/main.81df0e33.chunk.js",
-    "main.js.map": "/pokeplaylistv3/static/js/main.81df0e33.chunk.js.map",
+    "main.css": "/pokeplaylistv3/static/css/main.df34c41a.chunk.css",
+    "main.js": "/pokeplaylistv3/static/js/main.dc411104.chunk.js",
+    "main.js.map": "/pokeplaylistv3/static/js/main.dc411104.chunk.js.map",
     "runtime-main.js": "/pokeplaylistv3/static/js/runtime-main.e321893c.js",
     "runtime-main.js.map": "/pokeplaylistv3/static/js/runtime-main.e321893c.js.map",
     "static/js/2.2414a3e1.chunk.js": "/pokeplaylistv3/static/js/2.2414a3e1.chunk.js",
     "static/js/2.2414a3e1.chunk.js.map": "/pokeplaylistv3/static/js/2.2414a3e1.chunk.js.map",
     "index.html": "/pokeplaylistv3/index.html",
-    "precache-manifest.d6ecd5f9e521e473810cc989fd23665b.js": "/pokeplaylistv3/precache-manifest.d6ecd5f9e521e473810cc989fd23665b.js",
+    "precache-manifest.531baec74ec93005add78ee1f349543a.js": "/pokeplaylistv3/precache-manifest.531baec74ec93005add78ee1f349543a.js",
     "service-worker.js": "/pokeplaylistv3/service-worker.js",
-    "static/css/main.58dd2d22.chunk.css.map": "/pokeplaylistv3/static/css/main.58dd2d22.chunk.css.map",
+    "static/css/main.df34c41a.chunk.css.map": "/pokeplaylistv3/static/css/main.df34c41a.chunk.css.map",
     "static/js/2.2414a3e1.chunk.js.LICENSE.txt": "/pokeplaylistv3/static/js/2.2414a3e1.chunk.js.LICENSE.txt",
     "static/media/electric.png": "/pokeplaylistv3/static/media/electric.e06fbc21.png",
     "static/media/fire.png": "/pokeplaylistv3/static/media/fire.d549c106.png",
@@ -26,7 +26,7 @@
   "entrypoints": [
     "static/js/runtime-main.e321893c.js",
     "static/js/2.2414a3e1.chunk.js",
-    "static/css/main.58dd2d22.chunk.css",
-    "static/js/main.81df0e33.chunk.js"
+    "static/css/main.df34c41a.chunk.css",
+    "static/js/main.dc411104.chunk.js"
   ]
 }
