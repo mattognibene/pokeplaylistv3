@@ -43,7 +43,6 @@ class App extends React.Component {
     render() {
         return (
             <div>
-            
                 {!this.state.token && (
                     <div className="login_container">
                         <h1>PokéPlaylist</h1>

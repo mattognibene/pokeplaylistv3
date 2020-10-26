@@ -166,7 +166,7 @@ const getAlbums = (albums, genre) => {
     return albumsRows
 }
 
-const Card = ({genre, artistName, imageUrl, popularity, followers, albums, cardStyle}) => 
+const Card = ({genre, artistName, imageUrl, popularity, followers, albums, cardStyle, favoriteTrack}) => 
         <div className="card_border" style={cardStyle}>
           <div className={"card " + getHolographicClass(genre)}>
             <div className="header_container">
@@ -184,6 +184,7 @@ const Card = ({genre, artistName, imageUrl, popularity, followers, albums, cardS
             </div>
             {getAlbums(albums, genre)}
             <div id="bottom_container">
+                <div className="favorite_track" style={{color: getTextColor(genre)}}>{favoriteTrack}</div>
                 <div id="line_seperator"/>
                 <div id="bottom_stats">
                     <div className="bottom_item popularity">

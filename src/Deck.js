@@ -35,8 +35,17 @@ async function getArtistInfo(artistId, bearer) {
       name : data.name,
       imageUrl : data.images[0].url,
       popularity: data.popularity,
-      followers: data.followers.total
+      followers: data.followers.total,
+      id: data.id
     }
+  })
+  return await promise
+}
+
+async function getTopTracks(bearer, timeRange) {
+  var promise= NetworkModule.getData('https://api.spotify.com/v1/me/top/tracks?time_range=' + timeRange, bearer)
+  .then(data => {
+      return data.items
   })
   return await promise
 }
@@ -109,26 +118,57 @@ const downloadImage = () => {
       console.error('oops, something went wrong!', error);
     });
 }
+
+const getFavoriteTrack = (artistId, favoriteTracks) => {
+  var favTrack = ""
+  if (artistId && favoriteTracks) {
+    favoriteTracks.forEach((track) => {
+      track.artists.forEach((artist) => {
+        if (artist.id == artistId) {
+          if (favTrack == "") {
+            favTrack = "Your favorite track: " + track.name
+          }
+        }
+      })
+    })
+  }
+  if (favTrack.length > 59) {
+    return favTrack.substring(0, 55) + "..."
+  } else {
+    return favTrack
+  }
+}
 class Deck extends React.Component {
 
   updateState = (timeRange, bearer) => {
-    getTopArtists(bearer, timeRange).then((artistIds) => {
-      this.state.timeRange = timeRange
-      if (artistIds[0]) {
-        getArtistInfo(artistIds[0], bearer).then(data => this.setState({firstArtistInfo: data}))
-        getArtistAlbums(artistIds[0], bearer).then(data => this.setState({firstArtistAlbums: data}))
-      }
-      
-      if (artistIds[1]) {
-        getArtistInfo(artistIds[1], bearer).then(data => this.setState({secondArtistInfo: data}))
-        getArtistAlbums(artistIds[1], bearer).then(data => this.setState({secondArtistAlbums: data}))
-      }
-      
-      if (artistIds[2]) {
-        getArtistInfo(artistIds[2], bearer).then(data => this.setState({thirdArtistInfo: data}))
-        getArtistAlbums(artistIds[2], bearer).then(data => this.setState({thirdArtistAlbums: data}))
-      }
-    });
+    getTopTracks(bearer, timeRange).then((topTracks) => {
+      getTopArtists(bearer, timeRange).then((artistIds) => {
+        this.state.timeRange = timeRange
+        if (artistIds[0]) {
+          getArtistInfo(artistIds[0], bearer).then((data) => {
+            this.setState({firstArtistInfo: data})
+            this.setState({firstArtistTopTrack: getFavoriteTrack(data.id, topTracks)})
+          })
+          getArtistAlbums(artistIds[0], bearer).then((data) => {this.setState({firstArtistAlbums: data})})
+        }
+        
+        if (artistIds[1]) {
+          getArtistInfo(artistIds[1], bearer).then((data) => {
+            this.setState({secondArtistInfo: data})
+            this.setState({secondArtistTopTrack: getFavoriteTrack(data.id, topTracks)})
+          })
+          getArtistAlbums(artistIds[1], bearer).then(data => this.setState({secondArtistAlbums: data}))
+        }
+        
+        if (artistIds[2]) {
+          getArtistInfo(artistIds[2], bearer).then((data) => {
+            this.setState({thirdArtistInfo: data})
+            this.setState({thirdArtistTopTrack: getFavoriteTrack(data.id, topTracks)})
+          })
+          getArtistAlbums(artistIds[2], bearer).then(data => this.setState({thirdArtistAlbums: data}))
+        }
+      })
+    })
   }
 
   componentDidMount () {  
@@ -159,7 +199,7 @@ class Deck extends React.Component {
         </div>
         <div className="scale_container" style={{height:parseInt(this.state.scale * 765).toString() + 'px'}}>
           <div id="deck_container" style={{transform: 'scale(' + this.state.scale + ')'}}> 
-            {this.state.thirdArtistInfo && this.state.thirdArtistAlbums && (
+            {this.state.thirdArtistInfo && this.state.thirdArtistAlbums && this.state.thirdArtistTopTrack != undefined &&(
             <Card
               genre={this.state.thirdArtistInfo.genre}
               artistName={this.state.thirdArtistInfo.name}
@@ -167,10 +207,11 @@ class Deck extends React.Component {
               popularity={this.state.thirdArtistInfo.popularity}
               followers={this.state.thirdArtistInfo.followers}
               albums={this.state.thirdArtistAlbums}
+              favoriteTrack={this.state.thirdArtistTopTrack}
               cardStyle={{left: '375px', zIndex: 1, top: '50px', transform: 'rotate(30deg)'}}
               />
             )}
-            {this.state.secondArtistInfo && this.state.secondArtistAlbums && (
+            {this.state.secondArtistInfo && this.state.secondArtistAlbums && this.state.secondArtistTopTrack != undefined &&(
             <Card
               genre={this.state.secondArtistInfo.genre}
               artistName={this.state.secondArtistInfo.name}
@@ -178,11 +219,12 @@ class Deck extends React.Component {
               popularity={this.state.secondArtistInfo.popularity}
               followers={this.state.secondArtistInfo.followers}
               albums={this.state.secondArtistAlbums}
+              favoriteTrack={this.state.secondArtistTopTrack}
               cardStyle={{left: '-375px', marginTop: '-648px', zIndex: 1, transform: 'rotate(-30deg)'}}
               />
             )}
             
-            {this.state.firstArtistInfo && this.state.firstArtistAlbums && (
+            {this.state.firstArtistInfo && this.state.firstArtistAlbums && this.state.firstArtistTopTrack != undefined && (
             <Card
               genre={this.state.firstArtistInfo.genre}
               artistName={this.state.firstArtistInfo.name}
@@ -190,6 +232,7 @@ class Deck extends React.Component {
               popularity={this.state.firstArtistInfo.popularity}
               followers={this.state.firstArtistInfo.followers}
               albums={this.state.firstArtistAlbums}
+              favoriteTrack={this.state.firstArtistTopTrack}
               cardStyle={{left: '0px', marginTop: '-760px', zIndex: 2}}
               />
             )}
