@@ -144,41 +144,44 @@ class Deck extends React.Component {
           )}
           <h3>Your top 3 artists {getTimeRangeString(this.state.timeRange)}.</h3>
         </div>
-        <div className="deck_container" style={{transform: 'scale(' + this.state.scale + ')'} }>
-          {this.state.thirdArtistInfo && this.state.thirdArtistAlbums && (
-          <Card
-            genre={this.state.thirdArtistInfo.genre}
-            artistName={this.state.thirdArtistInfo.name}
-            imageUrl={this.state.thirdArtistInfo.imageUrl}
-            popularity={this.state.thirdArtistInfo.popularity}
-            followers={this.state.thirdArtistInfo.followers}
-            albums={this.state.thirdArtistAlbums}
-            cardStyle={{left: '375px', zIndex: 1, top: '50px', transform: 'rotate(30deg)'}}
-            />
-          )}
-          {this.state.secondArtistInfo && this.state.secondArtistAlbums && (
-          <Card
-            genre={this.state.secondArtistInfo.genre}
-            artistName={this.state.secondArtistInfo.name}
-            imageUrl={this.state.secondArtistInfo.imageUrl}
-            popularity={this.state.secondArtistInfo.popularity}
-            followers={this.state.secondArtistInfo.followers}
-            albums={this.state.secondArtistAlbums}
-            cardStyle={{left: '-375px', marginTop: '-648px', zIndex: 1, transform: 'rotate(-30deg)'}}
-            />
-          )}
-          
-          {this.state.firstArtistInfo && this.state.firstArtistAlbums && (
-          <Card
-            genre={this.state.firstArtistInfo.genre}
-            artistName={this.state.firstArtistInfo.name}
-            imageUrl={this.state.firstArtistInfo.imageUrl}
-            popularity={this.state.firstArtistInfo.popularity}
-            followers={this.state.firstArtistInfo.followers}
-            albums={this.state.firstArtistAlbums}
-            cardStyle={{left: '0px', marginTop: '-760px', zIndex: 2}}
-            />
-          )}
+        <div className="scale_container" style={{height:parseInt(this.state.scale * 765).toString() + 'px'}}>
+          <div className="deck_container" style={{transform: 'scale(' + this.state.scale + ')',
+          top: parseInt((-1/this.state.scale) * 7).toString() + 'vh'}}> 
+            {this.state.thirdArtistInfo && this.state.thirdArtistAlbums && (
+            <Card
+              genre={this.state.thirdArtistInfo.genre}
+              artistName={this.state.thirdArtistInfo.name}
+              imageUrl={this.state.thirdArtistInfo.imageUrl}
+              popularity={this.state.thirdArtistInfo.popularity}
+              followers={this.state.thirdArtistInfo.followers}
+              albums={this.state.thirdArtistAlbums}
+              cardStyle={{left: '375px', zIndex: 1, top: '50px', transform: 'rotate(30deg)'}}
+              />
+            )}
+            {this.state.secondArtistInfo && this.state.secondArtistAlbums && (
+            <Card
+              genre={this.state.secondArtistInfo.genre}
+              artistName={this.state.secondArtistInfo.name}
+              imageUrl={this.state.secondArtistInfo.imageUrl}
+              popularity={this.state.secondArtistInfo.popularity}
+              followers={this.state.secondArtistInfo.followers}
+              albums={this.state.secondArtistAlbums}
+              cardStyle={{left: '-375px', marginTop: '-648px', zIndex: 1, transform: 'rotate(-30deg)'}}
+              />
+            )}
+            
+            {this.state.firstArtistInfo && this.state.firstArtistAlbums && (
+            <Card
+              genre={this.state.firstArtistInfo.genre}
+              artistName={this.state.firstArtistInfo.name}
+              imageUrl={this.state.firstArtistInfo.imageUrl}
+              popularity={this.state.firstArtistInfo.popularity}
+              followers={this.state.firstArtistInfo.followers}
+              albums={this.state.firstArtistAlbums}
+              cardStyle={{left: '0px', marginTop: '-760px', zIndex: 2}}
+              />
+            )}
+          </div>
         </div>
         <div className="results">
           <h4 style={{marginTop: '100px'}}>Created with PokéPlaylist</h4>

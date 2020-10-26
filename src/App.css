@@ -32,3 +32,8 @@
 .created_by_link {
   text-decoration: none;
 }
+
+.created_by_container {
+  margin-top: 5vh;
+  font-family: 'Roboto';
+}

@@ -2,7 +2,22 @@
 
 .deck_container {
     position: relative;
-    padding-top: 75px;
+}
+
+@media (max-width: 450px) {
+    .deck_container {
+        position: relative;
+
+        left: -1vw;
+    }
+}
+
+@media (max-width: 375) {
+    .scale_container {
+        position: relative;
+
+        margin-left: -50vw;
+    }
 }
 
 .artist_card {
@@ -18,4 +33,9 @@
 
 .time_container {
     margin-top: 5vh;
+}
+
+.scale_container {
+    margin-top: 100px;
+    position: relative;
 }

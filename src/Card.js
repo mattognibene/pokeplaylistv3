@@ -45,11 +45,11 @@ const getType = (genre) => {
         else if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime') || genre.includes('hard') || genre.includes('metal')) {
             return metal
         }
-        else if (genre.includes('pop')) {
-            return psychic
-        }
         else if (genre.includes('edm') || genre.includes('electro') || genre.includes('dubstep') || genre.includes('brostep') || genre.includes('latin')) {
             return electric
+        }
+        else if (genre.includes('pop')) {
+            return psychic
         }
         else if (genre.includes('r&b')) {
             return fire
@@ -75,12 +75,12 @@ const getHolographicClass = (genre) => {
         else if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime') || genre.includes('hard') || genre.includes('metal')) {
             return 'holographic_hip_hop'
         }
-        else if (genre.includes('pop')) {
-            return 'holographic_pop'
-        }
         else if (genre.includes('edm') || genre.includes('electro') || genre.includes('dubstep') || genre.includes('brostep') || genre.includes('latin')) {
             return 'holographic_electro'
         } 
+        else if (genre.includes('pop')) {
+            return 'holographic_pop'
+        }
         else if (genre.includes('r&b')) {
             return 'holographic_rb'
         }
