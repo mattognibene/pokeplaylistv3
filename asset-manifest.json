@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/pokeplaylistv3/static/css/main.09b0fd2d.chunk.css",
-    "main.js": "/pokeplaylistv3/static/js/main.72252c91.chunk.js",
-    "main.js.map": "/pokeplaylistv3/static/js/main.72252c91.chunk.js.map",
+    "main.css": "/pokeplaylistv3/static/css/main.1d73c2c7.chunk.css",
+    "main.js": "/pokeplaylistv3/static/js/main.020537b3.chunk.js",
+    "main.js.map": "/pokeplaylistv3/static/js/main.020537b3.chunk.js.map",
     "runtime-main.js": "/pokeplaylistv3/static/js/runtime-main.e321893c.js",
     "runtime-main.js.map": "/pokeplaylistv3/static/js/runtime-main.e321893c.js.map",
-    "static/js/2.2414a3e1.chunk.js": "/pokeplaylistv3/static/js/2.2414a3e1.chunk.js",
-    "static/js/2.2414a3e1.chunk.js.map": "/pokeplaylistv3/static/js/2.2414a3e1.chunk.js.map",
+    "static/js/2.5ec178e3.chunk.js": "/pokeplaylistv3/static/js/2.5ec178e3.chunk.js",
+    "static/js/2.5ec178e3.chunk.js.map": "/pokeplaylistv3/static/js/2.5ec178e3.chunk.js.map",
     "index.html": "/pokeplaylistv3/index.html",
-    "precache-manifest.4451fa70e7000d1dbba1b3e276c1029e.js": "/pokeplaylistv3/precache-manifest.4451fa70e7000d1dbba1b3e276c1029e.js",
+    "precache-manifest.23094ffbf46dd2e75a6bdfeb8774f7dd.js": "/pokeplaylistv3/precache-manifest.23094ffbf46dd2e75a6bdfeb8774f7dd.js",
     "service-worker.js": "/pokeplaylistv3/service-worker.js",
-    "static/css/main.09b0fd2d.chunk.css.map": "/pokeplaylistv3/static/css/main.09b0fd2d.chunk.css.map",
-    "static/js/2.2414a3e1.chunk.js.LICENSE.txt": "/pokeplaylistv3/static/js/2.2414a3e1.chunk.js.LICENSE.txt",
+    "static/css/main.1d73c2c7.chunk.css.map": "/pokeplaylistv3/static/css/main.1d73c2c7.chunk.css.map",
+    "static/js/2.5ec178e3.chunk.js.LICENSE.txt": "/pokeplaylistv3/static/js/2.5ec178e3.chunk.js.LICENSE.txt",
     "static/media/electric.png": "/pokeplaylistv3/static/media/electric.e06fbc21.png",
     "static/media/fire.png": "/pokeplaylistv3/static/media/fire.d549c106.png",
     "static/media/ghost.png": "/pokeplaylistv3/static/media/ghost.6d52f2a5.png",
@@ -25,8 +25,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.e321893c.js",
-    "static/js/2.2414a3e1.chunk.js",
-    "static/css/main.09b0fd2d.chunk.css",
-    "static/js/main.72252c91.chunk.js"
+    "static/js/2.5ec178e3.chunk.js",
+    "static/css/main.1d73c2c7.chunk.css",
+    "static/js/main.020537b3.chunk.js"
   ]
 }
