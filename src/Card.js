@@ -102,7 +102,7 @@ const getTextColor = (genre) => {
         if (genre.includes('indie')) {
             return '#000000'
         }
-        if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime')|| genre.includes('rock') ||
+        if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime') || genre.includes('hard') || genre.includes('metal') ||
         genre.includes('emo') || genre.includes('punk')) {
             return '#FFFFFF'
         }
@@ -111,9 +111,9 @@ const getTextColor = (genre) => {
 }
 
 const getArtistName = (artistName, genre) => {
-    let total_length = parseInt(1.2 * artistName.length) + genre.length
+    let total_length = parseInt(1.2 * artistName.length) + cleanGenre(genre).length
     if (total_length > 35) {
-        return artistName.substring(0, parseInt((35 - genre.length) / 1.2) - 1) + "..."
+        return artistName.substring(0, parseInt((35 - cleanGenre(genre).length) / 1.2) - 1) + "..."
     } else {
         return artistName
     }

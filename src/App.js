@@ -6,7 +6,7 @@ import './App.css';
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "453ceedee5f94e42a7dc49bb1c00b5df";
-const redirectUri =  "https://mattognibene.github.io/pokeplaylistv3";
+const redirectUri = "https://mattognibene.github.io/pokeplaylistv3";
 const scopes = [
     "user-top-read"
 ];
