@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/pokeplaylistv3/static/css/main.886aa077.chunk.css",
-    "main.js": "/pokeplaylistv3/static/js/main.5eca7382.chunk.js",
-    "main.js.map": "/pokeplaylistv3/static/js/main.5eca7382.chunk.js.map",
+    "main.css": "/pokeplaylistv3/static/css/main.c0fcab2d.chunk.css",
+    "main.js": "/pokeplaylistv3/static/js/main.e3c4ee94.chunk.js",
+    "main.js.map": "/pokeplaylistv3/static/js/main.e3c4ee94.chunk.js.map",
     "runtime-main.js": "/pokeplaylistv3/static/js/runtime-main.e321893c.js",
     "runtime-main.js.map": "/pokeplaylistv3/static/js/runtime-main.e321893c.js.map",
-    "static/js/2.08d1771d.chunk.js": "/pokeplaylistv3/static/js/2.08d1771d.chunk.js",
-    "static/js/2.08d1771d.chunk.js.map": "/pokeplaylistv3/static/js/2.08d1771d.chunk.js.map",
+    "static/js/2.460e15ec.chunk.js": "/pokeplaylistv3/static/js/2.460e15ec.chunk.js",
+    "static/js/2.460e15ec.chunk.js.map": "/pokeplaylistv3/static/js/2.460e15ec.chunk.js.map",
     "index.html": "/pokeplaylistv3/index.html",
-    "precache-manifest.b46fec85acd4d222bac5136e0e480166.js": "/pokeplaylistv3/precache-manifest.b46fec85acd4d222bac5136e0e480166.js",
+    "precache-manifest.86e71affb7306248b6e1285311b708e7.js": "/pokeplaylistv3/precache-manifest.86e71affb7306248b6e1285311b708e7.js",
     "service-worker.js": "/pokeplaylistv3/service-worker.js",
-    "static/css/main.886aa077.chunk.css.map": "/pokeplaylistv3/static/css/main.886aa077.chunk.css.map",
-    "static/js/2.08d1771d.chunk.js.LICENSE.txt": "/pokeplaylistv3/static/js/2.08d1771d.chunk.js.LICENSE.txt",
+    "static/css/main.c0fcab2d.chunk.css.map": "/pokeplaylistv3/static/css/main.c0fcab2d.chunk.css.map",
+    "static/js/2.460e15ec.chunk.js.LICENSE.txt": "/pokeplaylistv3/static/js/2.460e15ec.chunk.js.LICENSE.txt",
     "static/media/electric.png": "/pokeplaylistv3/static/media/electric.e06fbc21.png",
     "static/media/fire.png": "/pokeplaylistv3/static/media/fire.d549c106.png",
     "static/media/ghost.png": "/pokeplaylistv3/static/media/ghost.6d52f2a5.png",
@@ -20,12 +20,13 @@
     "static/media/normal.png": "/pokeplaylistv3/static/media/normal.f51fc0ab.png",
     "static/media/psychic.png": "/pokeplaylistv3/static/media/psychic.236f1b4a.png",
     "static/media/resistance.png": "/pokeplaylistv3/static/media/resistance.ec3ee325.png",
+    "static/media/sample.png": "/pokeplaylistv3/static/media/sample.55e73a9b.png",
     "static/media/water.png": "/pokeplaylistv3/static/media/water.e969b574.png"
   },
   "entrypoints": [
     "static/js/runtime-main.e321893c.js",
-    "static/js/2.08d1771d.chunk.js",
-    "static/css/main.886aa077.chunk.css",
-    "static/js/main.5eca7382.chunk.js"
+    "static/js/2.460e15ec.chunk.js",
+    "static/css/main.c0fcab2d.chunk.css",
+    "static/js/main.e3c4ee94.chunk.js"
   ]
 }

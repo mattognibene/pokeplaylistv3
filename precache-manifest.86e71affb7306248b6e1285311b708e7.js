@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a6fec445f25a8f59ba4379edc1e1be82",
+    "revision": "21d5977b1c6999895e1579d94047f34b",
     "url": "/pokeplaylistv3/index.html"
   },
   {
-    "revision": "7d600d0a81c090b9bc2b",
-    "url": "/pokeplaylistv3/static/css/main.886aa077.chunk.css"
+    "revision": "952574496a9f6dbaa5fc",
+    "url": "/pokeplaylistv3/static/css/main.c0fcab2d.chunk.css"
   },
   {
-    "revision": "22d50ed4fc2c7677e497",
-    "url": "/pokeplaylistv3/static/js/2.08d1771d.chunk.js"
+    "revision": "dba7fd3e176ad1a9abb5",
+    "url": "/pokeplaylistv3/static/js/2.460e15ec.chunk.js"
   },
   {
     "revision": "f5fc2afae58c4ffc30c6148864765d4b",
-    "url": "/pokeplaylistv3/static/js/2.08d1771d.chunk.js.LICENSE.txt"
+    "url": "/pokeplaylistv3/static/js/2.460e15ec.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7d600d0a81c090b9bc2b",
-    "url": "/pokeplaylistv3/static/js/main.5eca7382.chunk.js"
+    "revision": "952574496a9f6dbaa5fc",
+    "url": "/pokeplaylistv3/static/js/main.e3c4ee94.chunk.js"
   },
   {
     "revision": "0b2beeba2e6255bf2848",
@@ -54,6 +54,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ec3ee3257048950d7020e62a83efec7f",
     "url": "/pokeplaylistv3/static/media/resistance.ec3ee325.png"
+  },
+  {
+    "revision": "55e73a9b21123a0be14c4cc6b47a6bd9",
+    "url": "/pokeplaylistv3/static/media/sample.55e73a9b.png"
   },
   {
     "revision": "e969b5745f5d86aa62ada1392ac26eb9",
