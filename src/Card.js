@@ -102,7 +102,7 @@ const getTextColor = (genre) => {
         if (genre.includes('indie')) {
             return '#000000'
         }
-        if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime') || genre.includes('hard') || genre.includes('metal') ||
+        if (genre.includes('hip') || genre.includes('rap') || genre.includes('grime') || genre.includes('hard') || genre.includes('metal') || genre.includes('rock') ||
         genre.includes('emo') || genre.includes('punk')) {
             return '#FFFFFF'
         }
