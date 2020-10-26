@@ -16,12 +16,20 @@
         position: relative;
         margin-top: -20vh;
     }
+    .created_with {
+        margin-top: -5vh;
+        position: relative;
+    }
 }
 
 @media (max-width: 1000px) {
     #deck_container {
         position: relative;
         margin-top: -20vh;
+    }
+    .created_with {
+        margin-top: -10vh;
+        position: relative;
     }
 }
 
@@ -31,12 +39,22 @@
         margin-top: -25vh;
     }
     
+    .created_with {
+        margin-top: -15vh;
+        position: relative;
+        font-size: .75em;
+    }
 }
 
 @media (max-width: 600px) {
     #deck_container {
         position: relative;
         margin-top: -30vh;
+    }
+    .created_with {
+        margin-top: -20vh;
+        position: relative;
+        font-size: .75em;
     }
 }
 
@@ -45,6 +63,24 @@
         position: relative;
         margin-top: -40vh;
         margin-left: -5vw;
+    }
+    .created_with {
+        margin-top: -25vh;
+        position: relative;
+        font-size: .75em;
+    }
+}
+
+@media (max-width: 370px) {
+    #deck_container {
+        position: relative;
+        margin-top: -50vh;
+        margin-left: -5vw;
+    }
+    .created_with {
+        margin-top: -30vh;
+        position: relative;
+        font-size: .75em;
     }
 }
 

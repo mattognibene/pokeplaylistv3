@@ -237,10 +237,10 @@ class Deck extends React.Component {
               />
             )}
           </div>
-          <div className="results">
-              {/* <div style={{marginTop: '100px'}} className="btn" onClick={() => downloadImage()}>Download Image</div> */}
-              <h4 style={{marginTop: '10px'}}>Created with PokéPlaylist</h4>
-            </div>
+          <div className="results created_with">
+            {/* <div style={{marginTop: '100px'}} className="btn" onClick={() => downloadImage()}>Download Image</div> */}
+            <h4 style={{marginTop: '10px'}}>Created with pokeplaylist.herokuapp.com</h4>
+          </div>
         </div>
       </div>
     );
