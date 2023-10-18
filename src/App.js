@@ -6,7 +6,7 @@ import './App.css';
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "453ceedee5f94e42a7dc49bb1c00b5df";
-const redirectUri = "https://www.mattognibene.com/pokeplaylistv3";//'https://pokeplaylist.herokuapp.com'
+const redirectUri = "https://mattognibene.github.io/pokeplaylistv3/";//'https://pokeplaylist.herokuapp.com'
 const scopes = [
     "user-top-read"
 ];
@@ -32,7 +32,7 @@ class App extends React.Component {
             // Set token
             this.setState({
                 token: _token
-            });            
+            });
         }
     }
     constructor(props) {
@@ -56,15 +56,15 @@ class App extends React.Component {
                         <div className="sample_container">
                             <img className='sample' src={sample} />
                         </div>
-                        <div className="created_by_container">Created by <a className="created_by_link" href="https://www.mattognibene.com">Matt Ognibene</a> | <a className="created_by_link"href="http://www2.jdrf.org/goto/deltnu">Donate</a> to JDRF to end T1D</div>
+                        <div className="created_by_container">Created by Matt Ognibene</div>
                         </div>
                 )}
                 {this.state.token && (
-                    <Deck bearer={this.state.token}/> 
+                    <Deck bearer={this.state.token}/>
                 )
                 }
             </div>
-            
+
         )
     }
 }
