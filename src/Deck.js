@@ -63,7 +63,7 @@ async function getArtistAlbums(artistId, bearer) {
             albums.push({name: cleanName, spotifyId: album.id})
             seen.push(cleanName)
           }
-        } 
+        }
     });
     return albums
   })
@@ -75,7 +75,7 @@ async function getArtistAlbums(artistId, bearer) {
     .then(data => {
       let items = data.items
       let tracks = []
-      
+
       items.forEach(function(track) {
           if (tracks.length < 6) {
             tracks.push(track.name)
@@ -109,7 +109,7 @@ const getTimeRangeString = (timeRange) => {
 }
 const downloadImage = () => {
   var node = document.getElementById('deck_container');
- 
+
   htmlToImage.toPng(node)
     .then(function (dataUrl) {
       download(dataUrl, 'pokeplaylist.png');
@@ -151,7 +151,7 @@ class Deck extends React.Component {
           })
           getArtistAlbums(artistIds[0], bearer).then((data) => {this.setState({firstArtistAlbums: data})})
         }
-        
+
         if (artistIds[1]) {
           getArtistInfo(artistIds[1], bearer).then((data) => {
             this.setState({secondArtistInfo: data})
@@ -159,7 +159,7 @@ class Deck extends React.Component {
           })
           getArtistAlbums(artistIds[1], bearer).then(data => this.setState({secondArtistAlbums: data}))
         }
-        
+
         if (artistIds[2]) {
           getArtistInfo(artistIds[2], bearer).then((data) => {
             this.setState({thirdArtistInfo: data})
@@ -171,7 +171,7 @@ class Deck extends React.Component {
     })
   }
 
-  componentDidMount () {  
+  componentDidMount () {
     this.updateState('medium_term', this.props.bearer)
   }
 
@@ -198,7 +198,7 @@ class Deck extends React.Component {
           <h3>Your top 3 artists {getTimeRangeString(this.state.timeRange)}.</h3>
         </div>
         <div className="scale_container" style={{height:parseInt(this.state.scale * 765).toString() + 'px'}}>
-          <div id="deck_container" style={{transform: 'scale(' + this.state.scale + ')'}}> 
+          <div id="deck_container" style={{transform: 'scale(' + this.state.scale + ')'}}>
             {this.state.thirdArtistInfo && this.state.thirdArtistAlbums && this.state.thirdArtistTopTrack != undefined &&(
             <Card
               genre={this.state.thirdArtistInfo.genre}
@@ -223,7 +223,7 @@ class Deck extends React.Component {
               cardStyle={{left: '-375px', marginTop: '-648px', zIndex: 1, transform: 'rotate(-30deg)'}}
               />
             )}
-            
+
             {this.state.firstArtistInfo && this.state.firstArtistAlbums && this.state.firstArtistTopTrack != undefined && (
             <Card
               genre={this.state.firstArtistInfo.genre}
@@ -239,7 +239,7 @@ class Deck extends React.Component {
           </div>
           <div className="results created_with">
             {/* <div style={{marginTop: '100px'}} className="btn" onClick={() => downloadImage()}>Download Image</div> */}
-            <h4 style={{marginTop: '10px'}}>Created with pokeplaylist.herokuapp.com</h4>
+            <h4 style={{marginTop: '10px'}}>Created with mattognibene.github.io/pokeplaylistv3</h4>
           </div>
         </div>
       </div>
