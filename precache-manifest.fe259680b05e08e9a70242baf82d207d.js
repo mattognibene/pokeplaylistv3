@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "19c03855408bb6364fd7082d2545acac",
+    "revision": "6f8d3cf69ea87e5f967ededb94f7bc6e",
     "url": "/pokeplaylistv3/index.html"
   },
   {
-    "revision": "e62084c5ece60b77f2c0",
+    "revision": "f80f98360c13ddcd5df8",
     "url": "/pokeplaylistv3/static/css/main.1d73c2c7.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pokeplaylistv3/static/js/2.46aaf102.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e62084c5ece60b77f2c0",
-    "url": "/pokeplaylistv3/static/js/main.660b56de.chunk.js"
+    "revision": "f80f98360c13ddcd5df8",
+    "url": "/pokeplaylistv3/static/js/main.bebf7ac4.chunk.js"
   },
   {
     "revision": "0b2beeba2e6255bf2848",
